@@ -1,0 +1,19 @@
+{
+  "name": "My Money Planner",
+  "short_name": "Money Planner",
+  "description": "Simple budgeting for bills, expenses and savings.",
+  "id": "/My-Money-Planner/",
+  "start_url": "/My-Money-Planner/",
+  "scope": "/My-Money-Planner/",
+  "display": "standalone",
+  "background_color": "#f9fbff",
+  "theme_color": "#0c1727",
+  "icons": [
+    {
+      "src": "./app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
