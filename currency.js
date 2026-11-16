@@ -18,7 +18,7 @@ try{const saved=localStorage.getItem(KEY);if(allowed.includes(saved))currency=sa
 window.mmpCurrencyCode=currency;
 picker.value=currency;
 function lang(){const val=document.getElementById('languageSelect')?.value||'en';return copy[val]?val:'en'}
-function updateNote(){note.textContent=copy[lang()].note}
+function updateNote(){note.textContent=copy[lang()].note;const indicator=document.getElementById('activeCurrency');if(indicator)indicator.textContent=({en:'Budget',es:'Presupuesto',ko:'예산',zh:'预算',fr:'Budget'}[lang()]||'Budget')+': '+currency}
 picker.addEventListener('change',()=>{
  const next=picker.value;
  if(!allowed.includes(next)){picker.value=currency;return}
@@ -26,7 +26,7 @@ picker.addEventListener('change',()=>{
  const template=copy[lang()].confirm;
  const prompt=template.replace('{old}',currency).replaceAll('{new}',next);
  if(!confirm(prompt)){picker.value=currency;return}
- currency=next;window.mmpCurrencyCode=next;
+ currency=next;window.mmpCurrencyCode=next;updateNote();
  try{localStorage.setItem(KEY,next)}catch(e){}
  if(typeof window.mmpRefreshBudget==='function')window.mmpRefreshBudget();
 });
