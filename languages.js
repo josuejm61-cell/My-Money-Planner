@@ -51,6 +51,7 @@ if(el.getAttribute('aria-label')!==converted)el.setAttribute('aria-label',conver
 }
 let queued=false;const observer=new MutationObserver(()=>{if(queued)return;queued=true;queueMicrotask(()=>{queued=false;apply()})});
 observer.observe(document.body,{subtree:true,childList:true,characterData:true});
+window.mmpTranslate=translated;
 picker.addEventListener('change',()=>{selected=picker.value;try{localStorage.setItem(storeKey,selected)}catch(e){}apply()});
 apply();
 })();
